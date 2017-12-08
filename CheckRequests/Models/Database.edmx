@@ -1,0 +1,1832 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VantEDGEPointModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="check_detail">
+          <Key>
+            <PropertyRef Name="check_id" />
+          </Key>
+          <Property Name="check_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="check_number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="buy_type" Type="int" Nullable="false" />
+          <Property Name="check_date" Type="datetime" Nullable="false" />
+          <Property Name="total_amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="image_path" Type="varchar" MaxLength="150" />
+          <Property Name="merged_file_path" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="check_request">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_needed" Type="datetime" />
+          <Property Name="requested_date" Type="datetime" Nullable="false" />
+          <Property Name="postage" Type="int" Nullable="false" />
+          <Property Name="comments" Type="varchar" MaxLength="250" />
+          <Property Name="business_action" Type="int" />
+          <Property Name="business_notes" Type="varchar" MaxLength="250" />
+          <Property Name="final_action" Type="int" />
+          <Property Name="AP_notes" Type="varchar" MaxLength="250" />
+          <Property Name="processing_state" Type="int" />
+          <Property Name="processed_by" Type="int" />
+          <Property Name="processed_date" Type="datetime" />
+          <Property Name="approved_by" Type="int" />
+          <Property Name="final_approval_by" Type="int" />
+          <Property Name="check_number" Type="varchar" MaxLength="20" />
+          <Property Name="create_by" Type="int" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="last_update_by" Type="int" Nullable="false" />
+          <Property Name="last_update_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="check_request_action">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="check_request_audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="create_by" Type="int" Nullable="false" />
+          <Property Name="xml_trace" Type="varchar" MaxLength="2048" />
+          <Property Name="check_request" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="check_request_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="check_request" Type="int" Nullable="false" />
+          <Property Name="media_order" Type="int" Nullable="false" />
+          <Property Name="action" Type="int" />
+          <Property Name="action_date" Type="datetime" />
+          <Property Name="auth_user" Type="int" />
+          <Property Name="notes" Type="varchar" MaxLength="250" />
+          <Property Name="last_update_date" Type="datetime" Nullable="false" />
+          <Property Name="last_update_by" Type="int" Nullable="false" />
+          <Property Name="media_order_detail" Type="int" />
+        </EntityType>
+        <EntityType Name="check_request_postage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="check_request_processing_state">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="employee_code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="social_security_num" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="birth_date" Type="datetime" />
+          <Property Name="employee_designation" Type="varchar" MaxLength="20" />
+          <Property Name="department" Type="int" />
+          <Property Name="addr_1" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="addr_2" Type="varchar" MaxLength="40" />
+          <Property Name="state_code" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="city_name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="zip_code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="phone_1" Type="varchar" MaxLength="20" />
+          <Property Name="phone_2" Type="varchar" MaxLength="20" />
+          <Property Name="employee_email" Type="varchar" MaxLength="40" />
+          <Property Name="note" Type="varchar" MaxLength="1024" />
+          <Property Name="status" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="last_update_date" Type="datetime" />
+          <Property Name="last_update_by" Type="int" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="create_by" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="visual_status" Type="bit" />
+          <Property Name="start_date" Type="datetime" />
+          <Property Name="end_date" Type="datetime" />
+          <Property Name="fax_num" Type="varchar" MaxLength="20" />
+          <Property Name="country" Type="varchar" MaxLength="3" />
+          <Property Name="ext_num" Type="varchar" MaxLength="6" />
+          <Property Name="office" Type="varchar" MaxLength="50" />
+          <Property Name="last_role_update_date" Type="datetime" />
+          <Property Name="primary_assistant" Type="int" />
+          <Property Name="b_prcent" Type="int" />
+          <Property Name="byrid" Type="varchar" MaxLength="6" />
+          <Property Name="b_cvia" Type="varchar" MaxLength="50" />
+          <Property Name="b_alsosee" Type="varchar" MaxLength="60" />
+          <Property Name="oldmts_id" Type="int" />
+          <Property Name="last_locked_date" Type="datetime" />
+          <Property Name="permanent_id" Type="varchar" MaxLength="10" />
+          <Property Name="temporary_id" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="media_order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="media_order_code" Type="int" />
+          <Property Name="order_ref" Type="int" />
+          <Property Name="order_type" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="local_air_date" Type="datetime" />
+          <Property Name="broadcast_date" Type="datetime" />
+          <Property Name="order_instruction" Type="varchar" MaxLength="100" />
+          <Property Name="start_air_time" Type="datetime" Nullable="false" />
+          <Property Name="end_air_time" Type="datetime" />
+          <Property Name="month_year" Type="varchar" MaxLength="10" />
+          <Property Name="week_date" Type="datetime" />
+          <Property Name="start_air_day" Type="varchar" MaxLength="3" />
+          <Property Name="end_air_day" Type="varchar" MaxLength="3" />
+          <Property Name="program_name" Type="varchar" MaxLength="40" />
+          <Property Name="order_qty" Type="int" Nullable="false" />
+          <Property Name="order_rate" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="show_title_phone" Type="varchar" MaxLength="15" />
+          <Property Name="air_count" Type="int" />
+          <Property Name="media_ratio" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="cpc_amt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="cpo_amt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="profit_loss_amt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="approve_status" Type="varchar" MaxLength="40" />
+          <Property Name="station_rate" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="client_rate" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="commission_amt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="document" Type="int" Nullable="false" />
+          <Property Name="show_title" Type="int" Nullable="false" />
+          <Property Name="broker" Type="varchar" MaxLength="50" />
+          <Property Name="tape_traffic_sent_date" Type="datetime" />
+          <Property Name="dubhouse_ack_tape_date" Type="datetime" />
+          <Property Name="station_trafic_sent_date" Type="datetime" />
+          <Property Name="station_tape_ack_date" Type="datetime" />
+          <Property Name="po_sent_date" Type="datetime" />
+          <Property Name="po_ack_date" Type="datetime" />
+          <Property Name="station_tracking_num" Type="varchar" MaxLength="10" />
+          <Property Name="client_tracking_num" Type="varchar" MaxLength="10" />
+          <Property Name="note" Type="varchar" MaxLength="1024" />
+          <Property Name="cancel_date" Type="datetime" />
+          <Property Name="status" Type="varchar" MaxLength="40" />
+          <Property Name="last_update_date" Type="datetime" />
+          <Property Name="last_update_by" Type="int" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="create_by" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="buyer" Type="int" />
+          <Property Name="visual_status" Type="bit" />
+          <Property Name="start_date" Type="datetime" />
+          <Property Name="end_date" Type="datetime" />
+          <Property Name="booked_gross_total" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="booked_gross_client" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="booked_gross_station" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="cleared_gross_total" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="cleared_gross_client" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="approver" Type="int" />
+          <Property Name="gross_revenue" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="conversion_ratio" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="cleared_gross_station" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Days" Type="varchar" MaxLength="20" />
+          <Property Name="pgc_against" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="cancel_reason" Type="nvarchar" MaxLength="200" />
+          <Property Name="new_show_title" Type="int" />
+          <Property Name="times" Type="varchar" MaxLength="50" />
+          <Property Name="approved_date" Type="datetime" />
+          <Property Name="approved_by" Type="int" />
+          <Property Name="packaged" Type="int" />
+          <Property Name="confirm_indicator" Type="bit" />
+          <Property Name="rename_id" Type="int" />
+          <Property Name="order_status" Type="varchar" MaxLength="3" />
+          <Property Name="broadcast_est_date" Type="datetime" />
+          <Property Name="failed_rule_descr" Type="varchar" MaxLength="2048" />
+          <Property Name="broker_info" Type="varchar" MaxLength="20" />
+          <Property Name="migrate_fox_date" Type="datetime" />
+          <Property Name="buy_type" Type="int" />
+          <Property Name="campaign_name" Type="varchar" MaxLength="40" />
+          <Property Name="client_code" Type="varchar" MaxLength="6" />
+          <Property Name="station_name" Type="varchar" MaxLength="40" />
+          <Property Name="payee_code" Type="varchar" MaxLength="15" />
+          <Property Name="internal_name" Type="varchar" MaxLength="40" />
+          <Property Name="market_name" Type="varchar" MaxLength="40" />
+          <Property Name="employee_code" Type="varchar" MaxLength="20" />
+          <Property Name="update_for_st" Type="varchar" MaxLength="20" />
+          <Property Name="dms_status" Type="varchar" MaxLength="20" />
+          <Property Name="media_order_barcode" Type="varchar" MaxLength="100" />
+          <Property Name="docm_po_link" Type="varchar" MaxLength="250" />
+          <Property Name="PO_reconcile_date" Type="datetime" />
+          <Property Name="PO_reconcile_by" Type="int" />
+          <Property Name="FoxProDocumentId" Type="varchar" MaxLength="20" />
+          <Property Name="rebooked_from" Type="int" />
+          <Property Name="rebooked_to" Type="int" />
+          <Property Name="IsAdded" Type="varchar" MaxLength="10" />
+          <Property Name="Qty_Difference" Type="int" />
+          <Property Name="prev_approve_status" Type="varchar" MaxLength="40" />
+          <Property Name="old_show_title" Type="int" />
+          <Property Name="pw_contact_role" Type="int" />
+          <Property Name="av_contact_role" Type="int" />
+          <Property Name="approval_feedback" Type="nvarchar" MaxLength="2048" />
+          <Property Name="m_invdate" Type="datetime" />
+          <Property Name="lmarket" Type="varchar" MaxLength="15" />
+          <Property Name="byrchk" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="statinv" Type="varchar" MaxLength="15" />
+          <Property Name="byrcom" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ordequiv" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="orefnum" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="edidate" Type="datetime" />
+          <Property Name="cairdate" Type="datetime" />
+          <Property Name="siteidorig" Type="varchar" MaxLength="2" />
+          <Property Name="verified" Type="bit" />
+          <Property Name="acctstatus" Type="varchar" MaxLength="1" />
+          <Property Name="strptkey" Type="varchar" MaxLength="10" />
+          <Property Name="acctnote" Type="varchar" MaxLength="1" />
+          <Property Name="acctbcom" Type="bit" />
+          <Property Name="b_chkno" Type="varchar" MaxLength="10" />
+          <Property Name="b_chkdate" Type="datetime" />
+          <Property Name="mdocrefnum" Type="varchar" MaxLength="9" />
+          <Property Name="otypeinst" Type="varchar" MaxLength="15" />
+          <Property Name="invtstamp" Type="datetime" />
+          <Property Name="costcode" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="brtrack" Type="varchar" MaxLength="15" />
+          <Property Name="revlcomm" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="permatrix" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="perprodate" Type="datetime" />
+          <Property Name="perproamt" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="percat" Type="varchar" MaxLength="1" />
+          <Property Name="authid" Type="varchar" MaxLength="15" />
+          <Property Name="perbccat" Type="varchar" MaxLength="3" />
+          <Property Name="aeperfckdt" Type="datetime" />
+          <Property Name="aeperfid" Type="decimal" Precision="2" Scale="0" />
+          <Property Name="m_invcr" Type="varchar" MaxLength="10" />
+          <Property Name="m_invcrdt" Type="datetime" />
+          <Property Name="acctype" Type="varchar" MaxLength="1" />
+          <Property Name="pleadin" Type="decimal" Precision="2" Scale="0" />
+          <Property Name="slot_num" Type="varchar" MaxLength="8" />
+          <Property Name="rectype" Type="varchar" MaxLength="1" />
+          <Property Name="lnidorg" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="airtimes" Type="varchar" MaxLength="13" />
+          <Property Name="airprog" Type="varchar" MaxLength="20" />
+          <Property Name="campver" Type="varchar" MaxLength="20" />
+          <Property Name="gross" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="extamt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="discamt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="etype" Type="varchar" MaxLength="1" />
+          <Property Name="revnum" Type="decimal" Precision="3" Scale="0" />
+          <Property Name="revnumst" Type="decimal" Precision="3" Scale="0" />
+          <Property Name="dates" Type="datetime" />
+          <Property Name="datee" Type="datetime" />
+          <Property Name="cl_crate" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="st_crate" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="br_crate" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="byr_net" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="origqty" Type="decimal" Precision="3" Scale="0" />
+          <Property Name="rtime" Type="decimal" Precision="7" Scale="0" />
+          <Property Name="rtimedesc" Type="varchar" MaxLength="7" />
+          <Property Name="campid" Type="varchar" MaxLength="20" />
+          <Property Name="basordr" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="upsells" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="fairdate" Type="datetime" />
+          <Property Name="dstat_net" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dclnt_net" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dbyr_net" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dlcomm" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="userid" Type="varchar" MaxLength="20" />
+          <Property Name="clearedqty" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="brokerid" Type="varchar" MaxLength="2" />
+          <Property Name="complete_ind" Type="bit" />
+          <Property Name="day_bit_mask" Type="tinyint" />
+          <Property Name="order_coverage" Type="varchar" MaxLength="1" />
+          <Property Name="migrate_fox_date_reverse" Type="datetime" />
+          <Property Name="buy_category" Type="int" />
+          <Property Name="rate_category" Type="int" />
+          <Property Name="MarketValueRate" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="po_cxl_Ack_date" Type="datetime" />
+          <Property Name="cluster_id" Type="int" />
+          <Property Name="prev_cluster_id" Type="int" />
+          <Property Name="attachment" Type="int" />
+          <Property Name="flight_end_date" Type="date" />
+          <Property Name="station_traffic_conf_date" Type="date" />
+          <Property Name="tax_amount" Type="decimal" Precision="19" Scale="6" Nullable="false" />
+          <Property Name="client_rate_gross" Type="decimal" Precision="20" Scale="6" StoreGeneratedPattern="Computed" />
+          <Property Name="station_rate_gross" Type="decimal" Precision="20" Scale="6" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="media_order_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="media_order" Type="int" Nullable="false" />
+          <Property Name="actual_air_date" Type="datetime" Nullable="false" />
+          <Property Name="actual_air_time" Type="datetime" />
+          <Property Name="inv_ind" Type="bit" />
+          <Property Name="e_type" Type="varchar" MaxLength="25" />
+          <Property Name="air_status" Type="varchar" MaxLength="10" />
+          <Property Name="num_of_calls" Type="decimal" Precision="19" Scale="9" />
+          <Property Name="num_of_inq" Type="int" />
+          <Property Name="collected_amt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="monitor_date" Type="datetime" />
+          <Property Name="monitor_time" Type="datetime" />
+          <Property Name="slot_num" Type="varchar" MaxLength="20" />
+          <Property Name="profit_loss_amt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="gross_amt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="note" Type="varchar" MaxLength="1024" />
+          <Property Name="last_update_date" Type="datetime" />
+          <Property Name="last_update_by" Type="int" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="create_by" Type="int" />
+          <Property Name="visual_status" Type="bit" />
+          <Property Name="start_date" Type="datetime" />
+          <Property Name="end_date" Type="datetime" />
+          <Property Name="cpo_amt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="cpc_amt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="media_ratio" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="conversion_ratio" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="station_rate" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="client_rate" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="gross_revenue" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="base_order_count" Type="decimal" Precision="19" Scale="9" />
+          <Property Name="upsell1_count" Type="int" />
+          <Property Name="upsell2_count" Type="int" />
+          <Property Name="upsell3_count" Type="int" />
+          <Property Name="upsell4_count" Type="int" />
+          <Property Name="upsell5_count" Type="int" />
+          <Property Name="upsell6_count" Type="int" />
+          <Property Name="upsell7_count" Type="int" />
+          <Property Name="upsell8_count" Type="int" />
+          <Property Name="upsell9_count" Type="int" />
+          <Property Name="upsell10_count" Type="int" />
+          <Property Name="upsell11_count" Type="int" />
+          <Property Name="upsell12_count" Type="int" />
+          <Property Name="upsell13_count" Type="int" />
+          <Property Name="upsell14_count" Type="int" />
+          <Property Name="upsell15_count" Type="int" />
+          <Property Name="upsell16_count" Type="int" />
+          <Property Name="upsell17_count" Type="int" />
+          <Property Name="upsell18_count" Type="int" />
+          <Property Name="upsell19_count" Type="int" />
+          <Property Name="upsell20_count" Type="int" />
+          <Property Name="upsell21_count" Type="int" />
+          <Property Name="upsell22_count" Type="int" />
+          <Property Name="upsell23_count" Type="int" />
+          <Property Name="upsell24_count" Type="int" />
+          <Property Name="upsell25_count" Type="int" />
+          <Property Name="show_title_upsell_detail" Type="int" />
+          <Property Name="total_upsell_count" Type="int" />
+          <Property Name="program_name" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="varchar" MaxLength="10" />
+          <Property Name="migrate_fox_date" Type="datetime" />
+          <Property Name="docm_postlog_link" Type="varchar" MaxLength="1024" />
+          <Property Name="dms_invoice_status" Type="varchar" MaxLength="15" />
+          <Property Name="docm_invoice_link" Type="varchar" MaxLength="50" />
+          <Property Name="invoice_num" Type="varchar" MaxLength="50" />
+          <Property Name="Invoice_Type" Type="varchar" MaxLength="10" />
+          <Property Name="post_log_date" Type="datetime" />
+          <Property Name="post_log_by" Type="int" />
+          <Property Name="invoice_date" Type="datetime" />
+          <Property Name="invoice_by" Type="int" />
+          <Property Name="dtid" Type="int" />
+          <Property Name="show_title_phone" Type="varchar" MaxLength="15" />
+          <Property Name="station_inv_num" Type="varchar" MaxLength="50" />
+          <Property Name="inv_rcvd_date" Type="datetime" />
+          <Property Name="station_chq_num" Type="varchar" MaxLength="10" />
+          <Property Name="station_chq_date" Type="datetime" />
+          <Property Name="client_inv_num" Type="varchar" MaxLength="10" />
+          <Property Name="client_chq_num" Type="varchar" MaxLength="10" />
+          <Property Name="client_chq_date" Type="datetime" />
+          <Property Name="date_rec_station_invoice_num" Type="datetime" />
+          <Property Name="date_sent_client_invoice_num" Type="datetime" />
+          <Property Name="broadcast_utc_date" Type="datetime" />
+          <Property Name="PO_reconcile_date" Type="datetime" />
+          <Property Name="PO_reconcile_by" Type="int" />
+          <Property Name="lbooked_date" Type="datetime" />
+          <Property Name="mbooked_date" Type="datetime" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="buyer_chq_num" Type="varchar" MaxLength="10" />
+          <Property Name="buyer_chq_date" Type="datetime" />
+          <Property Name="accounting_entry_status" Type="char" MaxLength="1" />
+          <Property Name="cancel_date" Type="datetime" />
+          <Property Name="boidbase" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="ordequiv" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="utctime" Type="datetime" />
+          <Property Name="verifyvia" Type="decimal" Precision="1" Scale="0" />
+          <Property Name="bnote" Type="varchar" MaxLength="30" />
+          <Property Name="mtype" Type="varchar" MaxLength="2" />
+          <Property Name="mairdate" Type="datetime" />
+          <Property Name="mairtime" Type="varchar" MaxLength="5" />
+          <Property Name="invoice_status_change_reason" Type="varchar" MaxLength="128" />
+          <Property Name="commission_amt" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="revlcomm" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Commission_Processed" Type="bit" />
+          <Property Name="Performance_Processed" Type="bit" />
+          <Property Name="web_click" Type="decimal" Precision="19" Scale="9" />
+          <Property Name="web_visit" Type="decimal" Precision="19" Scale="9" />
+          <Property Name="web_order" Type="decimal" Precision="19" Scale="9" />
+          <Property Name="upsell26_count" Type="decimal" Precision="19" Scale="9" />
+          <Property Name="upsell27_count" Type="decimal" Precision="19" Scale="9" />
+          <Property Name="upsell28_count" Type="decimal" Precision="19" Scale="9" />
+          <Property Name="upsell29_count" Type="decimal" Precision="19" Scale="9" />
+          <Property Name="upsell30_count" Type="decimal" Precision="19" Scale="9" />
+          <Property Name="web_revenue" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="prev_recon_e_type" Type="varchar" MaxLength="25" />
+          <Property Name="Performance_Processed_Date" Type="datetime" />
+          <Property Name="Commission_Processed_Date" Type="datetime" />
+          <Property Name="program_name_category" Type="varchar" MaxLength="50" />
+          <Property Name="lead_in_program_type" Type="varchar" MaxLength="50" />
+          <Property Name="NetworkOrSyndicated" Type="varchar" MaxLength="50" />
+          <Property Name="HighDef" Type="varchar" MaxLength="1" />
+          <Property Name="OriginalAirDate" Type="datetime" />
+          <Property Name="TVRating" Type="varchar" MaxLength="10" />
+          <Property Name="no_recalc" Type="bit" />
+          <Property Name="average_audience_15_segment" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="households_15_min_segment" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="households_15_min_segment2" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="phone_calls" Type="decimal" Precision="19" Scale="9" />
+          <Property Name="num_of_orders" Type="decimal" Precision="19" Scale="9" />
+          <Property Name="call_revenue" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="attachment" Type="int" />
+          <Property Name="prev_media_order_detail" Type="int" />
+          <Property Name="media_order_rebooked_from" Type="int" />
+          <Property Name="MarketValueRate" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="client_credit_inv_num" Type="varchar" MaxLength="10" />
+          <Property Name="client_credit_inv_date" Type="datetime" />
+          <Property Name="invoice_ms" Type="int" />
+          <Property Name="invoice_sec" Type="int" />
+          <Property Name="primary_rating" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="nielsen_performance_rating" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RATINGUPD" Type="bit" Nullable="false" />
+          <Property Name="ListingTitleHistory_tms" Type="int" />
+          <Property Name="ListingTitleHistory_rovi" Type="int" />
+          <Property Name="tax_amount" Type="decimal" Precision="19" Scale="6" Nullable="false" />
+          <Property Name="client_rate_gross" Type="decimal" Precision="20" Scale="6" StoreGeneratedPattern="Computed" />
+          <Property Name="station_rate_gross" Type="decimal" Precision="20" Scale="6" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <Association Name="FK_check_request_audit_check_request">
+          <End Role="check_request" Type="Self.check_request" Multiplicity="1" />
+          <End Role="check_request_audit" Type="Self.check_request_audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request_audit">
+              <PropertyRef Name="check_request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_busaction">
+          <End Role="check_request_action" Type="Self.check_request_action" Multiplicity="0..1" />
+          <End Role="check_request" Type="Self.check_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request_action">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request">
+              <PropertyRef Name="business_action" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_detail_action">
+          <End Role="check_request_action" Type="Self.check_request_action" Multiplicity="0..1" />
+          <End Role="check_request_detail" Type="Self.check_request_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request_action">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request_detail">
+              <PropertyRef Name="action" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_detail_check_request">
+          <End Role="check_request" Type="Self.check_request" Multiplicity="1" />
+          <End Role="check_request_detail" Type="Self.check_request_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request_detail">
+              <PropertyRef Name="check_request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_detail_employee">
+          <End Role="employee" Type="Self.employee" Multiplicity="0..1" />
+          <End Role="check_request_detail" Type="Self.check_request_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request_detail">
+              <PropertyRef Name="auth_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_detail_media_order">
+          <End Role="media_order" Type="Self.media_order" Multiplicity="1" />
+          <End Role="check_request_detail" Type="Self.check_request_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="media_order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request_detail">
+              <PropertyRef Name="media_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_finalaction">
+          <End Role="check_request_action" Type="Self.check_request_action" Multiplicity="0..1" />
+          <End Role="check_request" Type="Self.check_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request_action">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request">
+              <PropertyRef Name="final_action" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_postage">
+          <End Role="check_request_postage" Type="Self.check_request_postage" Multiplicity="1" />
+          <End Role="check_request" Type="Self.check_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request_postage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request">
+              <PropertyRef Name="postage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_state">
+          <End Role="check_request_processing_state" Type="Self.check_request_processing_state" Multiplicity="0..1" />
+          <End Role="check_request" Type="Self.check_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request_processing_state">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request">
+              <PropertyRef Name="processing_state" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_media_order_detail_media_order">
+          <End Role="media_order" Type="Self.media_order" Multiplicity="1" />
+          <End Role="media_order_detail" Type="Self.media_order_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="media_order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="media_order_detail">
+              <PropertyRef Name="media_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_media_order_rename_id">
+          <End Role="media_order" Type="Self.media_order" Multiplicity="0..1" />
+          <End Role="media_order1" Type="Self.media_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="media_order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="media_order1">
+              <PropertyRef Name="rename_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VantEDGEPointModelStoreContainer">
+          <EntitySet Name="check_detail" EntityType="Self.check_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="check_request" EntityType="Self.check_request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="check_request_action" EntityType="Self.check_request_action" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="check_request_audit" EntityType="Self.check_request_audit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="check_request_detail" EntityType="Self.check_request_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="check_request_postage" EntityType="Self.check_request_postage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="check_request_processing_state" EntityType="Self.check_request_processing_state" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="media_order" EntityType="Self.media_order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="media_order_detail" EntityType="Self.media_order_detail" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_check_request_audit_check_request" Association="Self.FK_check_request_audit_check_request">
+            <End Role="check_request" EntitySet="check_request" />
+            <End Role="check_request_audit" EntitySet="check_request_audit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_busaction" Association="Self.FK_check_request_busaction">
+            <End Role="check_request_action" EntitySet="check_request_action" />
+            <End Role="check_request" EntitySet="check_request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_detail_action" Association="Self.FK_check_request_detail_action">
+            <End Role="check_request_action" EntitySet="check_request_action" />
+            <End Role="check_request_detail" EntitySet="check_request_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_detail_check_request" Association="Self.FK_check_request_detail_check_request">
+            <End Role="check_request" EntitySet="check_request" />
+            <End Role="check_request_detail" EntitySet="check_request_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_detail_employee" Association="Self.FK_check_request_detail_employee">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="check_request_detail" EntitySet="check_request_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_detail_media_order" Association="Self.FK_check_request_detail_media_order">
+            <End Role="media_order" EntitySet="media_order" />
+            <End Role="check_request_detail" EntitySet="check_request_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_finalaction" Association="Self.FK_check_request_finalaction">
+            <End Role="check_request_action" EntitySet="check_request_action" />
+            <End Role="check_request" EntitySet="check_request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_postage" Association="Self.FK_check_request_postage">
+            <End Role="check_request_postage" EntitySet="check_request_postage" />
+            <End Role="check_request" EntitySet="check_request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_state" Association="Self.FK_check_request_state">
+            <End Role="check_request_processing_state" EntitySet="check_request_processing_state" />
+            <End Role="check_request" EntitySet="check_request" />
+          </AssociationSet>
+          <AssociationSet Name="fk_media_order_detail_media_order" Association="Self.fk_media_order_detail_media_order">
+            <End Role="media_order" EntitySet="media_order" />
+            <End Role="media_order_detail" EntitySet="media_order_detail" />
+          </AssociationSet>
+          <AssociationSet Name="fk_media_order_rename_id" Association="Self.fk_media_order_rename_id">
+            <End Role="media_order" EntitySet="media_order" />
+            <End Role="media_order1" EntitySet="media_order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VantEDGEPointModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="check_detail">
+          <Key>
+            <PropertyRef Name="check_id" />
+          </Key>
+          <Property Name="check_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="check_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="buy_type" Type="Int32" Nullable="false" />
+          <Property Name="check_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="total_amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="image_path" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="merged_file_path" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="check_request">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_needed" Type="DateTime" Precision="3" />
+          <Property Name="requested_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="postage" Type="Int32" Nullable="false" />
+          <Property Name="comments" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="business_action" Type="Int32" />
+          <Property Name="business_notes" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="final_action" Type="Int32" />
+          <Property Name="AP_notes" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="processing_state" Type="Int32" />
+          <Property Name="processed_by" Type="Int32" />
+          <Property Name="processed_date" Type="DateTime" Precision="3" />
+          <Property Name="approved_by" Type="Int32" />
+          <Property Name="final_approval_by" Type="Int32" />
+          <Property Name="check_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="create_by" Type="Int32" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="last_update_by" Type="Int32" Nullable="false" />
+          <Property Name="last_update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="check_request_audit" Relationship="Self.FK_check_request_audit_check_request" FromRole="check_request" ToRole="check_request_audit" />
+          <NavigationProperty Name="check_request_action" Relationship="Self.FK_check_request_busaction" FromRole="check_request" ToRole="check_request_action" />
+          <NavigationProperty Name="check_request_detail" Relationship="Self.FK_check_request_detail_check_request" FromRole="check_request" ToRole="check_request_detail" />
+          <NavigationProperty Name="check_request_action1" Relationship="Self.FK_check_request_finalaction" FromRole="check_request" ToRole="check_request_action" />
+          <NavigationProperty Name="check_request_postage" Relationship="Self.FK_check_request_postage" FromRole="check_request" ToRole="check_request_postage" />
+          <NavigationProperty Name="check_request_processing_state" Relationship="Self.FK_check_request_state" FromRole="check_request" ToRole="check_request_processing_state" />
+        </EntityType>
+        <EntityType Name="check_request_action">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="check_request" Relationship="Self.FK_check_request_busaction" FromRole="check_request_action" ToRole="check_request" />
+          <NavigationProperty Name="check_request1" Relationship="Self.FK_check_request_finalaction" FromRole="check_request_action" ToRole="check_request" />
+          <NavigationProperty Name="check_request_detail" Relationship="Self.FK_check_request_detail_action" FromRole="check_request_action" ToRole="check_request_detail" />
+        </EntityType>
+        <EntityType Name="check_request_audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_by" Type="Int32" Nullable="false" />
+          <Property Name="xml_trace" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+          <Property Name="check_request" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="check_request1" Relationship="Self.FK_check_request_audit_check_request" FromRole="check_request_audit" ToRole="check_request" />
+        </EntityType>
+        <EntityType Name="check_request_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="check_request" Type="Int32" Nullable="false" />
+          <Property Name="media_order" Type="Int32" Nullable="false" />
+          <Property Name="action" Type="Int32" />
+          <Property Name="action_date" Type="DateTime" Precision="3" />
+          <Property Name="auth_user" Type="Int32" />
+          <Property Name="notes" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="last_update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="last_update_by" Type="Int32" Nullable="false" />
+          <Property Name="media_order_detail" Type="Int32" />
+          <NavigationProperty Name="check_request1" Relationship="Self.FK_check_request_detail_check_request" FromRole="check_request_detail" ToRole="check_request" />
+          <NavigationProperty Name="check_request_action" Relationship="Self.FK_check_request_detail_action" FromRole="check_request_detail" ToRole="check_request_action" />
+          <NavigationProperty Name="employee" Relationship="VantEDGEPointModel.FK_check_request_detail_employee" FromRole="check_request_detail" ToRole="employee" />
+          <NavigationProperty Name="media_order1" Relationship="VantEDGEPointModel.FK_check_request_detail_media_order" FromRole="check_request_detail" ToRole="media_order" />
+        </EntityType>
+        <EntityType Name="check_request_postage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="check_request" Relationship="Self.FK_check_request_postage" FromRole="check_request_postage" ToRole="check_request" />
+        </EntityType>
+        <EntityType Name="check_request_processing_state">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="check_request" Relationship="Self.FK_check_request_state" FromRole="check_request_processing_state" ToRole="check_request" />
+        </EntityType>
+        <Association Name="FK_check_request_audit_check_request">
+          <End Role="check_request" Type="Self.check_request" Multiplicity="1" />
+          <End Role="check_request_audit" Type="Self.check_request_audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request_audit">
+              <PropertyRef Name="check_request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_busaction">
+          <End Role="check_request_action" Type="Self.check_request_action" Multiplicity="0..1" />
+          <End Role="check_request" Type="Self.check_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request_action">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request">
+              <PropertyRef Name="business_action" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_detail_check_request">
+          <End Role="check_request" Type="Self.check_request" Multiplicity="1" />
+          <End Role="check_request_detail" Type="Self.check_request_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request_detail">
+              <PropertyRef Name="check_request" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_finalaction">
+          <End Role="check_request_action" Type="Self.check_request_action" Multiplicity="0..1" />
+          <End Role="check_request" Type="Self.check_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request_action">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request">
+              <PropertyRef Name="final_action" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_postage">
+          <End Role="check_request_postage" Type="Self.check_request_postage" Multiplicity="1" />
+          <End Role="check_request" Type="Self.check_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request_postage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request">
+              <PropertyRef Name="postage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_state">
+          <End Role="check_request_processing_state" Type="Self.check_request_processing_state" Multiplicity="0..1" />
+          <End Role="check_request" Type="Self.check_request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request_processing_state">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request">
+              <PropertyRef Name="processing_state" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_detail_action">
+          <End Role="check_request_action" Type="Self.check_request_action" Multiplicity="0..1" />
+          <End Role="check_request_detail" Type="Self.check_request_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="check_request_action">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request_detail">
+              <PropertyRef Name="action" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VantEDGEPointEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="check_detail" EntityType="Self.check_detail" />
+          <EntitySet Name="check_request" EntityType="Self.check_request" />
+          <EntitySet Name="check_request_action" EntityType="Self.check_request_action" />
+          <EntitySet Name="check_request_audit" EntityType="Self.check_request_audit" />
+          <EntitySet Name="check_request_detail" EntityType="Self.check_request_detail" />
+          <EntitySet Name="check_request_postage" EntityType="Self.check_request_postage" />
+          <EntitySet Name="check_request_processing_state" EntityType="Self.check_request_processing_state" />
+          <AssociationSet Name="FK_check_request_audit_check_request" Association="Self.FK_check_request_audit_check_request">
+            <End Role="check_request" EntitySet="check_request" />
+            <End Role="check_request_audit" EntitySet="check_request_audit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_busaction" Association="Self.FK_check_request_busaction">
+            <End Role="check_request_action" EntitySet="check_request_action" />
+            <End Role="check_request" EntitySet="check_request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_detail_check_request" Association="Self.FK_check_request_detail_check_request">
+            <End Role="check_request" EntitySet="check_request" />
+            <End Role="check_request_detail" EntitySet="check_request_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_finalaction" Association="Self.FK_check_request_finalaction">
+            <End Role="check_request_action" EntitySet="check_request_action" />
+            <End Role="check_request" EntitySet="check_request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_postage" Association="Self.FK_check_request_postage">
+            <End Role="check_request_postage" EntitySet="check_request_postage" />
+            <End Role="check_request" EntitySet="check_request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_state" Association="Self.FK_check_request_state">
+            <End Role="check_request_processing_state" EntitySet="check_request_processing_state" />
+            <End Role="check_request" EntitySet="check_request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_detail_action" Association="Self.FK_check_request_detail_action">
+            <End Role="check_request_action" EntitySet="check_request_action" />
+            <End Role="check_request_detail" EntitySet="check_request_detail" />
+          </AssociationSet>
+          <EntitySet Name="employees" EntityType="VantEDGEPointModel.employee" />
+          <EntitySet Name="media_order" EntityType="VantEDGEPointModel.media_order" />
+          <EntitySet Name="media_order_detail" EntityType="VantEDGEPointModel.media_order_detail" />
+          <AssociationSet Name="FK_check_request_detail_employee" Association="VantEDGEPointModel.FK_check_request_detail_employee">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="check_request_detail" EntitySet="check_request_detail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_check_request_detail_media_order" Association="VantEDGEPointModel.FK_check_request_detail_media_order">
+            <End Role="media_order" EntitySet="media_order" />
+            <End Role="check_request_detail" EntitySet="check_request_detail" />
+          </AssociationSet>
+          <AssociationSet Name="fk_media_order_detail_media_order" Association="VantEDGEPointModel.fk_media_order_detail_media_order">
+            <End Role="media_order" EntitySet="media_order" />
+            <End Role="media_order_detail" EntitySet="media_order_detail" />
+          </AssociationSet>
+          <AssociationSet Name="fk_media_order_rename_id" Association="VantEDGEPointModel.fk_media_order_rename_id">
+            <End Role="media_order" EntitySet="media_order" />
+            <End Role="media_order1" EntitySet="media_order" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="employee_code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="social_security_num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="birth_date" Type="DateTime" Precision="3" />
+          <Property Name="employee_designation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="department" Type="Int32" />
+          <Property Name="addr_1" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="addr_2" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="state_code" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="city_name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="zip_code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="phone_1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="phone_2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="employee_email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="note" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="last_update_date" Type="DateTime" Precision="3" />
+          <Property Name="last_update_by" Type="Int32" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_by" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="visual_status" Type="Boolean" />
+          <Property Name="start_date" Type="DateTime" Precision="3" />
+          <Property Name="end_date" Type="DateTime" Precision="3" />
+          <Property Name="fax_num" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ext_num" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="office" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="last_role_update_date" Type="DateTime" Precision="3" />
+          <Property Name="primary_assistant" Type="Int32" />
+          <Property Name="b_prcent" Type="Int32" />
+          <Property Name="byrid" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="b_cvia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="b_alsosee" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="oldmts_id" Type="Int32" />
+          <Property Name="last_locked_date" Type="DateTime" Precision="3" />
+          <Property Name="permanent_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="temporary_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="check_request_detail" Relationship="VantEDGEPointModel.FK_check_request_detail_employee" FromRole="employee" ToRole="check_request_detail" />
+        </EntityType>
+        <EntityType Name="media_order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="media_order_code" Type="Int32" />
+          <Property Name="order_ref" Type="Int32" />
+          <Property Name="order_type" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="local_air_date" Type="DateTime" Precision="3" />
+          <Property Name="broadcast_date" Type="DateTime" Precision="3" />
+          <Property Name="order_instruction" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="start_air_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="end_air_time" Type="DateTime" Precision="3" />
+          <Property Name="month_year" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="week_date" Type="DateTime" Precision="3" />
+          <Property Name="start_air_day" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="end_air_day" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="program_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="order_qty" Type="Int32" Nullable="false" />
+          <Property Name="order_rate" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="show_title_phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="air_count" Type="Int32" />
+          <Property Name="media_ratio" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="cpc_amt" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="cpo_amt" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="profit_loss_amt" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="approve_status" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="station_rate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="client_rate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="commission_amt" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="document" Type="Int32" Nullable="false" />
+          <Property Name="show_title" Type="Int32" Nullable="false" />
+          <Property Name="broker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tape_traffic_sent_date" Type="DateTime" Precision="3" />
+          <Property Name="dubhouse_ack_tape_date" Type="DateTime" Precision="3" />
+          <Property Name="station_trafic_sent_date" Type="DateTime" Precision="3" />
+          <Property Name="station_tape_ack_date" Type="DateTime" Precision="3" />
+          <Property Name="po_sent_date" Type="DateTime" Precision="3" />
+          <Property Name="po_ack_date" Type="DateTime" Precision="3" />
+          <Property Name="station_tracking_num" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="client_tracking_num" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="note" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="cancel_date" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="last_update_date" Type="DateTime" Precision="3" />
+          <Property Name="last_update_by" Type="Int32" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="create_by" Type="Int32" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="buyer" Type="Int32" />
+          <Property Name="visual_status" Type="Boolean" />
+          <Property Name="start_date" Type="DateTime" Precision="3" />
+          <Property Name="end_date" Type="DateTime" Precision="3" />
+          <Property Name="booked_gross_total" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="booked_gross_client" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="booked_gross_station" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="cleared_gross_total" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="cleared_gross_client" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="approver" Type="Int32" />
+          <Property Name="gross_revenue" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="conversion_ratio" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="cleared_gross_station" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Days" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pgc_against" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="cancel_reason" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="new_show_title" Type="Int32" />
+          <Property Name="times" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="approved_date" Type="DateTime" Precision="3" />
+          <Property Name="approved_by" Type="Int32" />
+          <Property Name="packaged" Type="Int32" />
+          <Property Name="confirm_indicator" Type="Boolean" />
+          <Property Name="rename_id" Type="Int32" />
+          <Property Name="order_status" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="broadcast_est_date" Type="DateTime" Precision="3" />
+          <Property Name="failed_rule_descr" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+          <Property Name="broker_info" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="migrate_fox_date" Type="DateTime" Precision="3" />
+          <Property Name="buy_type" Type="Int32" />
+          <Property Name="campaign_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="client_code" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="station_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="payee_code" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="internal_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="market_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="employee_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="update_for_st" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dms_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="media_order_barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="docm_po_link" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PO_reconcile_date" Type="DateTime" Precision="3" />
+          <Property Name="PO_reconcile_by" Type="Int32" />
+          <Property Name="FoxProDocumentId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="rebooked_from" Type="Int32" />
+          <Property Name="rebooked_to" Type="Int32" />
+          <Property Name="IsAdded" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Qty_Difference" Type="Int32" />
+          <Property Name="prev_approve_status" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="old_show_title" Type="Int32" />
+          <Property Name="pw_contact_role" Type="Int32" />
+          <Property Name="av_contact_role" Type="Int32" />
+          <Property Name="approval_feedback" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="m_invdate" Type="DateTime" Precision="3" />
+          <Property Name="lmarket" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="byrchk" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="statinv" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="byrcom" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ordequiv" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="orefnum" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="edidate" Type="DateTime" Precision="3" />
+          <Property Name="cairdate" Type="DateTime" Precision="3" />
+          <Property Name="siteidorig" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="verified" Type="Boolean" />
+          <Property Name="acctstatus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="strptkey" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="acctnote" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="acctbcom" Type="Boolean" />
+          <Property Name="b_chkno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="b_chkdate" Type="DateTime" Precision="3" />
+          <Property Name="mdocrefnum" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="otypeinst" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="invtstamp" Type="DateTime" Precision="3" />
+          <Property Name="costcode" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="brtrack" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="revlcomm" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="permatrix" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="perprodate" Type="DateTime" Precision="3" />
+          <Property Name="perproamt" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="percat" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="authid" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="perbccat" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="aeperfckdt" Type="DateTime" Precision="3" />
+          <Property Name="aeperfid" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="m_invcr" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="m_invcrdt" Type="DateTime" Precision="3" />
+          <Property Name="acctype" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="pleadin" Type="Decimal" Precision="2" Scale="0" />
+          <Property Name="slot_num" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="rectype" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="lnidorg" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="airtimes" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="airprog" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="campver" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="gross" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="extamt" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="discamt" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="etype" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="revnum" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="revnumst" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="dates" Type="DateTime" Precision="3" />
+          <Property Name="datee" Type="DateTime" Precision="3" />
+          <Property Name="cl_crate" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="st_crate" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="br_crate" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="byr_net" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="origqty" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="rtime" Type="Decimal" Precision="7" Scale="0" />
+          <Property Name="rtimedesc" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="campid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="basordr" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="upsells" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="fairdate" Type="DateTime" Precision="3" />
+          <Property Name="dstat_net" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="dclnt_net" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="dbyr_net" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="dlcomm" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="userid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="clearedqty" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="brokerid" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="complete_ind" Type="Boolean" />
+          <Property Name="day_bit_mask" Type="Byte" />
+          <Property Name="order_coverage" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="migrate_fox_date_reverse" Type="DateTime" Precision="3" />
+          <Property Name="buy_category" Type="Int32" />
+          <Property Name="rate_category" Type="Int32" />
+          <Property Name="MarketValueRate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="po_cxl_Ack_date" Type="DateTime" Precision="3" />
+          <Property Name="cluster_id" Type="Int32" />
+          <Property Name="prev_cluster_id" Type="Int32" />
+          <Property Name="attachment" Type="Int32" />
+          <Property Name="flight_end_date" Type="DateTime" Precision="0" />
+          <Property Name="station_traffic_conf_date" Type="DateTime" Precision="0" />
+          <Property Name="tax_amount" Type="Decimal" Nullable="false" Precision="19" Scale="6" />
+          <Property Name="client_rate_gross" Type="Decimal" Precision="20" Scale="6" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="station_rate_gross" Type="Decimal" Precision="20" Scale="6" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="check_request_detail" Relationship="VantEDGEPointModel.FK_check_request_detail_media_order" FromRole="media_order" ToRole="check_request_detail" />
+          <NavigationProperty Name="media_order_detail" Relationship="VantEDGEPointModel.fk_media_order_detail_media_order" FromRole="media_order" ToRole="media_order_detail" />
+          <NavigationProperty Name="media_order1" Relationship="VantEDGEPointModel.fk_media_order_rename_id" FromRole="media_order" ToRole="media_order1" />
+          <NavigationProperty Name="media_order2" Relationship="VantEDGEPointModel.fk_media_order_rename_id" FromRole="media_order1" ToRole="media_order" />
+        </EntityType>
+        <EntityType Name="media_order_detail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="media_order" Type="Int32" Nullable="false" />
+          <Property Name="actual_air_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="actual_air_time" Type="DateTime" Precision="3" />
+          <Property Name="inv_ind" Type="Boolean" />
+          <Property Name="e_type" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="air_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="num_of_calls" Type="Decimal" Precision="19" Scale="9" />
+          <Property Name="num_of_inq" Type="Int32" />
+          <Property Name="collected_amt" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="monitor_date" Type="DateTime" Precision="3" />
+          <Property Name="monitor_time" Type="DateTime" Precision="3" />
+          <Property Name="slot_num" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="profit_loss_amt" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="gross_amt" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="note" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="last_update_date" Type="DateTime" Precision="3" />
+          <Property Name="last_update_by" Type="Int32" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="create_by" Type="Int32" />
+          <Property Name="visual_status" Type="Boolean" />
+          <Property Name="start_date" Type="DateTime" Precision="3" />
+          <Property Name="end_date" Type="DateTime" Precision="3" />
+          <Property Name="cpo_amt" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="cpc_amt" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="media_ratio" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="conversion_ratio" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="station_rate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="client_rate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="gross_revenue" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="base_order_count" Type="Decimal" Precision="19" Scale="9" />
+          <Property Name="upsell1_count" Type="Int32" />
+          <Property Name="upsell2_count" Type="Int32" />
+          <Property Name="upsell3_count" Type="Int32" />
+          <Property Name="upsell4_count" Type="Int32" />
+          <Property Name="upsell5_count" Type="Int32" />
+          <Property Name="upsell6_count" Type="Int32" />
+          <Property Name="upsell7_count" Type="Int32" />
+          <Property Name="upsell8_count" Type="Int32" />
+          <Property Name="upsell9_count" Type="Int32" />
+          <Property Name="upsell10_count" Type="Int32" />
+          <Property Name="upsell11_count" Type="Int32" />
+          <Property Name="upsell12_count" Type="Int32" />
+          <Property Name="upsell13_count" Type="Int32" />
+          <Property Name="upsell14_count" Type="Int32" />
+          <Property Name="upsell15_count" Type="Int32" />
+          <Property Name="upsell16_count" Type="Int32" />
+          <Property Name="upsell17_count" Type="Int32" />
+          <Property Name="upsell18_count" Type="Int32" />
+          <Property Name="upsell19_count" Type="Int32" />
+          <Property Name="upsell20_count" Type="Int32" />
+          <Property Name="upsell21_count" Type="Int32" />
+          <Property Name="upsell22_count" Type="Int32" />
+          <Property Name="upsell23_count" Type="Int32" />
+          <Property Name="upsell24_count" Type="Int32" />
+          <Property Name="upsell25_count" Type="Int32" />
+          <Property Name="show_title_upsell_detail" Type="Int32" />
+          <Property Name="total_upsell_count" Type="Int32" />
+          <Property Name="program_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="migrate_fox_date" Type="DateTime" Precision="3" />
+          <Property Name="docm_postlog_link" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="dms_invoice_status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="docm_invoice_link" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="invoice_num" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Invoice_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="post_log_date" Type="DateTime" Precision="3" />
+          <Property Name="post_log_by" Type="Int32" />
+          <Property Name="invoice_date" Type="DateTime" Precision="3" />
+          <Property Name="invoice_by" Type="Int32" />
+          <Property Name="dtid" Type="Int32" />
+          <Property Name="show_title_phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="station_inv_num" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="inv_rcvd_date" Type="DateTime" Precision="3" />
+          <Property Name="station_chq_num" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="station_chq_date" Type="DateTime" Precision="3" />
+          <Property Name="client_inv_num" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="client_chq_num" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="client_chq_date" Type="DateTime" Precision="3" />
+          <Property Name="date_rec_station_invoice_num" Type="DateTime" Precision="3" />
+          <Property Name="date_sent_client_invoice_num" Type="DateTime" Precision="3" />
+          <Property Name="broadcast_utc_date" Type="DateTime" Precision="3" />
+          <Property Name="PO_reconcile_date" Type="DateTime" Precision="3" />
+          <Property Name="PO_reconcile_by" Type="Int32" />
+          <Property Name="lbooked_date" Type="DateTime" Precision="3" />
+          <Property Name="mbooked_date" Type="DateTime" Precision="3" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="buyer_chq_num" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="buyer_chq_date" Type="DateTime" Precision="3" />
+          <Property Name="accounting_entry_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cancel_date" Type="DateTime" Precision="3" />
+          <Property Name="boidbase" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="ordequiv" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="utctime" Type="DateTime" Precision="3" />
+          <Property Name="verifyvia" Type="Decimal" Precision="1" Scale="0" />
+          <Property Name="bnote" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mtype" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="mairdate" Type="DateTime" Precision="3" />
+          <Property Name="mairtime" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="invoice_status_change_reason" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="commission_amt" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="revlcomm" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Commission_Processed" Type="Boolean" />
+          <Property Name="Performance_Processed" Type="Boolean" />
+          <Property Name="web_click" Type="Decimal" Precision="19" Scale="9" />
+          <Property Name="web_visit" Type="Decimal" Precision="19" Scale="9" />
+          <Property Name="web_order" Type="Decimal" Precision="19" Scale="9" />
+          <Property Name="upsell26_count" Type="Decimal" Precision="19" Scale="9" />
+          <Property Name="upsell27_count" Type="Decimal" Precision="19" Scale="9" />
+          <Property Name="upsell28_count" Type="Decimal" Precision="19" Scale="9" />
+          <Property Name="upsell29_count" Type="Decimal" Precision="19" Scale="9" />
+          <Property Name="upsell30_count" Type="Decimal" Precision="19" Scale="9" />
+          <Property Name="web_revenue" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="prev_recon_e_type" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Performance_Processed_Date" Type="DateTime" Precision="3" />
+          <Property Name="Commission_Processed_Date" Type="DateTime" Precision="3" />
+          <Property Name="program_name_category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lead_in_program_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NetworkOrSyndicated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HighDef" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="OriginalAirDate" Type="DateTime" Precision="3" />
+          <Property Name="TVRating" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="no_recalc" Type="Boolean" />
+          <Property Name="average_audience_15_segment" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="households_15_min_segment" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="households_15_min_segment2" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="phone_calls" Type="Decimal" Precision="19" Scale="9" />
+          <Property Name="num_of_orders" Type="Decimal" Precision="19" Scale="9" />
+          <Property Name="call_revenue" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="attachment" Type="Int32" />
+          <Property Name="prev_media_order_detail" Type="Int32" />
+          <Property Name="media_order_rebooked_from" Type="Int32" />
+          <Property Name="MarketValueRate" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="client_credit_inv_num" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="client_credit_inv_date" Type="DateTime" Precision="3" />
+          <Property Name="invoice_ms" Type="Int32" />
+          <Property Name="invoice_sec" Type="Int32" />
+          <Property Name="primary_rating" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="nielsen_performance_rating" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RATINGUPD" Type="Boolean" Nullable="false" />
+          <Property Name="ListingTitleHistory_tms" Type="Int32" />
+          <Property Name="ListingTitleHistory_rovi" Type="Int32" />
+          <Property Name="tax_amount" Type="Decimal" Nullable="false" Precision="19" Scale="6" />
+          <Property Name="client_rate_gross" Type="Decimal" Precision="20" Scale="6" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="station_rate_gross" Type="Decimal" Precision="20" Scale="6" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="media_order1" Relationship="VantEDGEPointModel.fk_media_order_detail_media_order" FromRole="media_order_detail" ToRole="media_order" />
+        </EntityType>
+        <Association Name="FK_check_request_detail_employee">
+          <End Type="VantEDGEPointModel.employee" Role="employee" Multiplicity="0..1" />
+          <End Type="VantEDGEPointModel.check_request_detail" Role="check_request_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request_detail">
+              <PropertyRef Name="auth_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_check_request_detail_media_order">
+          <End Type="VantEDGEPointModel.media_order" Role="media_order" Multiplicity="1" />
+          <End Type="VantEDGEPointModel.check_request_detail" Role="check_request_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="media_order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="check_request_detail">
+              <PropertyRef Name="media_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_media_order_detail_media_order">
+          <End Type="VantEDGEPointModel.media_order" Role="media_order" Multiplicity="1" />
+          <End Type="VantEDGEPointModel.media_order_detail" Role="media_order_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="media_order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="media_order_detail">
+              <PropertyRef Name="media_order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_media_order_rename_id">
+          <End Type="VantEDGEPointModel.media_order" Role="media_order" Multiplicity="0..1" />
+          <End Type="VantEDGEPointModel.media_order" Role="media_order1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="media_order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="media_order1">
+              <PropertyRef Name="rename_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VantEDGEPointModelStoreContainer" CdmEntityContainer="VantEDGEPointEntities">
+          <EntitySetMapping Name="check_detail">
+            <EntityTypeMapping TypeName="VantEDGEPointModel.check_detail">
+              <MappingFragment StoreEntitySet="check_detail">
+                <ScalarProperty Name="check_id" ColumnName="check_id" />
+                <ScalarProperty Name="check_number" ColumnName="check_number" />
+                <ScalarProperty Name="buy_type" ColumnName="buy_type" />
+                <ScalarProperty Name="check_date" ColumnName="check_date" />
+                <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="merged_file_path" ColumnName="merged_file_path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="check_request">
+            <EntityTypeMapping TypeName="VantEDGEPointModel.check_request">
+              <MappingFragment StoreEntitySet="check_request">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date_needed" ColumnName="date_needed" />
+                <ScalarProperty Name="requested_date" ColumnName="requested_date" />
+                <ScalarProperty Name="postage" ColumnName="postage" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="business_action" ColumnName="business_action" />
+                <ScalarProperty Name="business_notes" ColumnName="business_notes" />
+                <ScalarProperty Name="final_action" ColumnName="final_action" />
+                <ScalarProperty Name="AP_notes" ColumnName="AP_notes" />
+                <ScalarProperty Name="processing_state" ColumnName="processing_state" />
+                <ScalarProperty Name="processed_by" ColumnName="processed_by" />
+                <ScalarProperty Name="processed_date" ColumnName="processed_date" />
+                <ScalarProperty Name="approved_by" ColumnName="approved_by" />
+                <ScalarProperty Name="final_approval_by" ColumnName="final_approval_by" />
+                <ScalarProperty Name="check_number" ColumnName="check_number" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="last_update_by" ColumnName="last_update_by" />
+                <ScalarProperty Name="last_update_date" ColumnName="last_update_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="check_request_action">
+            <EntityTypeMapping TypeName="VantEDGEPointModel.check_request_action">
+              <MappingFragment StoreEntitySet="check_request_action">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="check_request_audit">
+            <EntityTypeMapping TypeName="VantEDGEPointModel.check_request_audit">
+              <MappingFragment StoreEntitySet="check_request_audit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="xml_trace" ColumnName="xml_trace" />
+                <ScalarProperty Name="check_request" ColumnName="check_request" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="check_request_detail">
+            <EntityTypeMapping TypeName="VantEDGEPointModel.check_request_detail">
+              <MappingFragment StoreEntitySet="check_request_detail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="check_request" ColumnName="check_request" />
+                <ScalarProperty Name="media_order" ColumnName="media_order" />
+                <ScalarProperty Name="action" ColumnName="action" />
+                <ScalarProperty Name="action_date" ColumnName="action_date" />
+                <ScalarProperty Name="auth_user" ColumnName="auth_user" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="last_update_date" ColumnName="last_update_date" />
+                <ScalarProperty Name="last_update_by" ColumnName="last_update_by" />
+                <ScalarProperty Name="media_order_detail" ColumnName="media_order_detail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="check_request_postage">
+            <EntityTypeMapping TypeName="VantEDGEPointModel.check_request_postage">
+              <MappingFragment StoreEntitySet="check_request_postage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="check_request_processing_state">
+            <EntityTypeMapping TypeName="VantEDGEPointModel.check_request_processing_state">
+              <MappingFragment StoreEntitySet="check_request_processing_state">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="VantEDGEPointModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="temporary_id" ColumnName="temporary_id" />
+                <ScalarProperty Name="permanent_id" ColumnName="permanent_id" />
+                <ScalarProperty Name="last_locked_date" ColumnName="last_locked_date" />
+                <ScalarProperty Name="oldmts_id" ColumnName="oldmts_id" />
+                <ScalarProperty Name="b_alsosee" ColumnName="b_alsosee" />
+                <ScalarProperty Name="b_cvia" ColumnName="b_cvia" />
+                <ScalarProperty Name="byrid" ColumnName="byrid" />
+                <ScalarProperty Name="b_prcent" ColumnName="b_prcent" />
+                <ScalarProperty Name="primary_assistant" ColumnName="primary_assistant" />
+                <ScalarProperty Name="last_role_update_date" ColumnName="last_role_update_date" />
+                <ScalarProperty Name="office" ColumnName="office" />
+                <ScalarProperty Name="ext_num" ColumnName="ext_num" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="fax_num" ColumnName="fax_num" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="visual_status" ColumnName="visual_status" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="last_update_by" ColumnName="last_update_by" />
+                <ScalarProperty Name="last_update_date" ColumnName="last_update_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="employee_email" ColumnName="employee_email" />
+                <ScalarProperty Name="phone_2" ColumnName="phone_2" />
+                <ScalarProperty Name="phone_1" ColumnName="phone_1" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="state_code" ColumnName="state_code" />
+                <ScalarProperty Name="addr_2" ColumnName="addr_2" />
+                <ScalarProperty Name="addr_1" ColumnName="addr_1" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="employee_designation" ColumnName="employee_designation" />
+                <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+                <ScalarProperty Name="social_security_num" ColumnName="social_security_num" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="employee_code" ColumnName="employee_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="media_order">
+            <EntityTypeMapping TypeName="VantEDGEPointModel.media_order">
+              <MappingFragment StoreEntitySet="media_order">
+                <ScalarProperty Name="station_rate_gross" ColumnName="station_rate_gross" />
+                <ScalarProperty Name="client_rate_gross" ColumnName="client_rate_gross" />
+                <ScalarProperty Name="tax_amount" ColumnName="tax_amount" />
+                <ScalarProperty Name="station_traffic_conf_date" ColumnName="station_traffic_conf_date" />
+                <ScalarProperty Name="flight_end_date" ColumnName="flight_end_date" />
+                <ScalarProperty Name="attachment" ColumnName="attachment" />
+                <ScalarProperty Name="prev_cluster_id" ColumnName="prev_cluster_id" />
+                <ScalarProperty Name="cluster_id" ColumnName="cluster_id" />
+                <ScalarProperty Name="po_cxl_Ack_date" ColumnName="po_cxl_Ack_date" />
+                <ScalarProperty Name="MarketValueRate" ColumnName="MarketValueRate" />
+                <ScalarProperty Name="rate_category" ColumnName="rate_category" />
+                <ScalarProperty Name="buy_category" ColumnName="buy_category" />
+                <ScalarProperty Name="migrate_fox_date_reverse" ColumnName="migrate_fox_date_reverse" />
+                <ScalarProperty Name="order_coverage" ColumnName="order_coverage" />
+                <ScalarProperty Name="day_bit_mask" ColumnName="day_bit_mask" />
+                <ScalarProperty Name="complete_ind" ColumnName="complete_ind" />
+                <ScalarProperty Name="brokerid" ColumnName="brokerid" />
+                <ScalarProperty Name="clearedqty" ColumnName="clearedqty" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="dlcomm" ColumnName="dlcomm" />
+                <ScalarProperty Name="dbyr_net" ColumnName="dbyr_net" />
+                <ScalarProperty Name="dclnt_net" ColumnName="dclnt_net" />
+                <ScalarProperty Name="dstat_net" ColumnName="dstat_net" />
+                <ScalarProperty Name="fairdate" ColumnName="fairdate" />
+                <ScalarProperty Name="upsells" ColumnName="upsells" />
+                <ScalarProperty Name="basordr" ColumnName="basordr" />
+                <ScalarProperty Name="campid" ColumnName="campid" />
+                <ScalarProperty Name="rtimedesc" ColumnName="rtimedesc" />
+                <ScalarProperty Name="rtime" ColumnName="rtime" />
+                <ScalarProperty Name="origqty" ColumnName="origqty" />
+                <ScalarProperty Name="byr_net" ColumnName="byr_net" />
+                <ScalarProperty Name="br_crate" ColumnName="br_crate" />
+                <ScalarProperty Name="st_crate" ColumnName="st_crate" />
+                <ScalarProperty Name="cl_crate" ColumnName="cl_crate" />
+                <ScalarProperty Name="datee" ColumnName="datee" />
+                <ScalarProperty Name="dates" ColumnName="dates" />
+                <ScalarProperty Name="revnumst" ColumnName="revnumst" />
+                <ScalarProperty Name="revnum" ColumnName="revnum" />
+                <ScalarProperty Name="etype" ColumnName="etype" />
+                <ScalarProperty Name="discamt" ColumnName="discamt" />
+                <ScalarProperty Name="extamt" ColumnName="extamt" />
+                <ScalarProperty Name="gross" ColumnName="gross" />
+                <ScalarProperty Name="campver" ColumnName="campver" />
+                <ScalarProperty Name="airprog" ColumnName="airprog" />
+                <ScalarProperty Name="airtimes" ColumnName="airtimes" />
+                <ScalarProperty Name="lnidorg" ColumnName="lnidorg" />
+                <ScalarProperty Name="rectype" ColumnName="rectype" />
+                <ScalarProperty Name="slot_num" ColumnName="slot_num" />
+                <ScalarProperty Name="pleadin" ColumnName="pleadin" />
+                <ScalarProperty Name="acctype" ColumnName="acctype" />
+                <ScalarProperty Name="m_invcrdt" ColumnName="m_invcrdt" />
+                <ScalarProperty Name="m_invcr" ColumnName="m_invcr" />
+                <ScalarProperty Name="aeperfid" ColumnName="aeperfid" />
+                <ScalarProperty Name="aeperfckdt" ColumnName="aeperfckdt" />
+                <ScalarProperty Name="perbccat" ColumnName="perbccat" />
+                <ScalarProperty Name="authid" ColumnName="authid" />
+                <ScalarProperty Name="percat" ColumnName="percat" />
+                <ScalarProperty Name="perproamt" ColumnName="perproamt" />
+                <ScalarProperty Name="perprodate" ColumnName="perprodate" />
+                <ScalarProperty Name="permatrix" ColumnName="permatrix" />
+                <ScalarProperty Name="revlcomm" ColumnName="revlcomm" />
+                <ScalarProperty Name="brtrack" ColumnName="brtrack" />
+                <ScalarProperty Name="costcode" ColumnName="costcode" />
+                <ScalarProperty Name="invtstamp" ColumnName="invtstamp" />
+                <ScalarProperty Name="otypeinst" ColumnName="otypeinst" />
+                <ScalarProperty Name="mdocrefnum" ColumnName="mdocrefnum" />
+                <ScalarProperty Name="b_chkdate" ColumnName="b_chkdate" />
+                <ScalarProperty Name="b_chkno" ColumnName="b_chkno" />
+                <ScalarProperty Name="acctbcom" ColumnName="acctbcom" />
+                <ScalarProperty Name="acctnote" ColumnName="acctnote" />
+                <ScalarProperty Name="strptkey" ColumnName="strptkey" />
+                <ScalarProperty Name="acctstatus" ColumnName="acctstatus" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+                <ScalarProperty Name="siteidorig" ColumnName="siteidorig" />
+                <ScalarProperty Name="cairdate" ColumnName="cairdate" />
+                <ScalarProperty Name="edidate" ColumnName="edidate" />
+                <ScalarProperty Name="orefnum" ColumnName="orefnum" />
+                <ScalarProperty Name="ordequiv" ColumnName="ordequiv" />
+                <ScalarProperty Name="byrcom" ColumnName="byrcom" />
+                <ScalarProperty Name="statinv" ColumnName="statinv" />
+                <ScalarProperty Name="byrchk" ColumnName="byrchk" />
+                <ScalarProperty Name="lmarket" ColumnName="lmarket" />
+                <ScalarProperty Name="m_invdate" ColumnName="m_invdate" />
+                <ScalarProperty Name="approval_feedback" ColumnName="approval_feedback" />
+                <ScalarProperty Name="av_contact_role" ColumnName="av_contact_role" />
+                <ScalarProperty Name="pw_contact_role" ColumnName="pw_contact_role" />
+                <ScalarProperty Name="old_show_title" ColumnName="old_show_title" />
+                <ScalarProperty Name="prev_approve_status" ColumnName="prev_approve_status" />
+                <ScalarProperty Name="Qty_Difference" ColumnName="Qty_Difference" />
+                <ScalarProperty Name="IsAdded" ColumnName="IsAdded" />
+                <ScalarProperty Name="rebooked_to" ColumnName="rebooked_to" />
+                <ScalarProperty Name="rebooked_from" ColumnName="rebooked_from" />
+                <ScalarProperty Name="FoxProDocumentId" ColumnName="FoxProDocumentId" />
+                <ScalarProperty Name="PO_reconcile_by" ColumnName="PO_reconcile_by" />
+                <ScalarProperty Name="PO_reconcile_date" ColumnName="PO_reconcile_date" />
+                <ScalarProperty Name="docm_po_link" ColumnName="docm_po_link" />
+                <ScalarProperty Name="media_order_barcode" ColumnName="media_order_barcode" />
+                <ScalarProperty Name="dms_status" ColumnName="dms_status" />
+                <ScalarProperty Name="update_for_st" ColumnName="update_for_st" />
+                <ScalarProperty Name="employee_code" ColumnName="employee_code" />
+                <ScalarProperty Name="market_name" ColumnName="market_name" />
+                <ScalarProperty Name="internal_name" ColumnName="internal_name" />
+                <ScalarProperty Name="payee_code" ColumnName="payee_code" />
+                <ScalarProperty Name="station_name" ColumnName="station_name" />
+                <ScalarProperty Name="client_code" ColumnName="client_code" />
+                <ScalarProperty Name="campaign_name" ColumnName="campaign_name" />
+                <ScalarProperty Name="buy_type" ColumnName="buy_type" />
+                <ScalarProperty Name="migrate_fox_date" ColumnName="migrate_fox_date" />
+                <ScalarProperty Name="broker_info" ColumnName="broker_info" />
+                <ScalarProperty Name="failed_rule_descr" ColumnName="failed_rule_descr" />
+                <ScalarProperty Name="broadcast_est_date" ColumnName="broadcast_est_date" />
+                <ScalarProperty Name="order_status" ColumnName="order_status" />
+                <ScalarProperty Name="rename_id" ColumnName="rename_id" />
+                <ScalarProperty Name="confirm_indicator" ColumnName="confirm_indicator" />
+                <ScalarProperty Name="packaged" ColumnName="packaged" />
+                <ScalarProperty Name="approved_by" ColumnName="approved_by" />
+                <ScalarProperty Name="approved_date" ColumnName="approved_date" />
+                <ScalarProperty Name="times" ColumnName="times" />
+                <ScalarProperty Name="new_show_title" ColumnName="new_show_title" />
+                <ScalarProperty Name="cancel_reason" ColumnName="cancel_reason" />
+                <ScalarProperty Name="pgc_against" ColumnName="pgc_against" />
+                <ScalarProperty Name="Days" ColumnName="Days" />
+                <ScalarProperty Name="cleared_gross_station" ColumnName="cleared_gross_station" />
+                <ScalarProperty Name="conversion_ratio" ColumnName="conversion_ratio" />
+                <ScalarProperty Name="gross_revenue" ColumnName="gross_revenue" />
+                <ScalarProperty Name="approver" ColumnName="approver" />
+                <ScalarProperty Name="cleared_gross_client" ColumnName="cleared_gross_client" />
+                <ScalarProperty Name="cleared_gross_total" ColumnName="cleared_gross_total" />
+                <ScalarProperty Name="booked_gross_station" ColumnName="booked_gross_station" />
+                <ScalarProperty Name="booked_gross_client" ColumnName="booked_gross_client" />
+                <ScalarProperty Name="booked_gross_total" ColumnName="booked_gross_total" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="visual_status" ColumnName="visual_status" />
+                <ScalarProperty Name="buyer" ColumnName="buyer" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="last_update_by" ColumnName="last_update_by" />
+                <ScalarProperty Name="last_update_date" ColumnName="last_update_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="cancel_date" ColumnName="cancel_date" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="client_tracking_num" ColumnName="client_tracking_num" />
+                <ScalarProperty Name="station_tracking_num" ColumnName="station_tracking_num" />
+                <ScalarProperty Name="po_ack_date" ColumnName="po_ack_date" />
+                <ScalarProperty Name="po_sent_date" ColumnName="po_sent_date" />
+                <ScalarProperty Name="station_tape_ack_date" ColumnName="station_tape_ack_date" />
+                <ScalarProperty Name="station_trafic_sent_date" ColumnName="station_trafic_sent_date" />
+                <ScalarProperty Name="dubhouse_ack_tape_date" ColumnName="dubhouse_ack_tape_date" />
+                <ScalarProperty Name="tape_traffic_sent_date" ColumnName="tape_traffic_sent_date" />
+                <ScalarProperty Name="broker" ColumnName="broker" />
+                <ScalarProperty Name="show_title" ColumnName="show_title" />
+                <ScalarProperty Name="document" ColumnName="document" />
+                <ScalarProperty Name="commission_amt" ColumnName="commission_amt" />
+                <ScalarProperty Name="client_rate" ColumnName="client_rate" />
+                <ScalarProperty Name="station_rate" ColumnName="station_rate" />
+                <ScalarProperty Name="approve_status" ColumnName="approve_status" />
+                <ScalarProperty Name="profit_loss_amt" ColumnName="profit_loss_amt" />
+                <ScalarProperty Name="cpo_amt" ColumnName="cpo_amt" />
+                <ScalarProperty Name="cpc_amt" ColumnName="cpc_amt" />
+                <ScalarProperty Name="media_ratio" ColumnName="media_ratio" />
+                <ScalarProperty Name="air_count" ColumnName="air_count" />
+                <ScalarProperty Name="show_title_phone" ColumnName="show_title_phone" />
+                <ScalarProperty Name="order_rate" ColumnName="order_rate" />
+                <ScalarProperty Name="order_qty" ColumnName="order_qty" />
+                <ScalarProperty Name="program_name" ColumnName="program_name" />
+                <ScalarProperty Name="end_air_day" ColumnName="end_air_day" />
+                <ScalarProperty Name="start_air_day" ColumnName="start_air_day" />
+                <ScalarProperty Name="week_date" ColumnName="week_date" />
+                <ScalarProperty Name="month_year" ColumnName="month_year" />
+                <ScalarProperty Name="end_air_time" ColumnName="end_air_time" />
+                <ScalarProperty Name="start_air_time" ColumnName="start_air_time" />
+                <ScalarProperty Name="order_instruction" ColumnName="order_instruction" />
+                <ScalarProperty Name="broadcast_date" ColumnName="broadcast_date" />
+                <ScalarProperty Name="local_air_date" ColumnName="local_air_date" />
+                <ScalarProperty Name="order_type" ColumnName="order_type" />
+                <ScalarProperty Name="order_ref" ColumnName="order_ref" />
+                <ScalarProperty Name="media_order_code" ColumnName="media_order_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="media_order_detail">
+            <EntityTypeMapping TypeName="VantEDGEPointModel.media_order_detail">
+              <MappingFragment StoreEntitySet="media_order_detail">
+                <ScalarProperty Name="station_rate_gross" ColumnName="station_rate_gross" />
+                <ScalarProperty Name="client_rate_gross" ColumnName="client_rate_gross" />
+                <ScalarProperty Name="tax_amount" ColumnName="tax_amount" />
+                <ScalarProperty Name="ListingTitleHistory_rovi" ColumnName="ListingTitleHistory_rovi" />
+                <ScalarProperty Name="ListingTitleHistory_tms" ColumnName="ListingTitleHistory_tms" />
+                <ScalarProperty Name="RATINGUPD" ColumnName="RATINGUPD" />
+                <ScalarProperty Name="nielsen_performance_rating" ColumnName="nielsen_performance_rating" />
+                <ScalarProperty Name="primary_rating" ColumnName="primary_rating" />
+                <ScalarProperty Name="invoice_sec" ColumnName="invoice_sec" />
+                <ScalarProperty Name="invoice_ms" ColumnName="invoice_ms" />
+                <ScalarProperty Name="client_credit_inv_date" ColumnName="client_credit_inv_date" />
+                <ScalarProperty Name="client_credit_inv_num" ColumnName="client_credit_inv_num" />
+                <ScalarProperty Name="MarketValueRate" ColumnName="MarketValueRate" />
+                <ScalarProperty Name="media_order_rebooked_from" ColumnName="media_order_rebooked_from" />
+                <ScalarProperty Name="prev_media_order_detail" ColumnName="prev_media_order_detail" />
+                <ScalarProperty Name="attachment" ColumnName="attachment" />
+                <ScalarProperty Name="call_revenue" ColumnName="call_revenue" />
+                <ScalarProperty Name="num_of_orders" ColumnName="num_of_orders" />
+                <ScalarProperty Name="phone_calls" ColumnName="phone_calls" />
+                <ScalarProperty Name="households_15_min_segment2" ColumnName="households_15_min_segment2" />
+                <ScalarProperty Name="households_15_min_segment" ColumnName="households_15_min_segment" />
+                <ScalarProperty Name="average_audience_15_segment" ColumnName="average_audience_15_segment" />
+                <ScalarProperty Name="no_recalc" ColumnName="no_recalc" />
+                <ScalarProperty Name="TVRating" ColumnName="TVRating" />
+                <ScalarProperty Name="OriginalAirDate" ColumnName="OriginalAirDate" />
+                <ScalarProperty Name="HighDef" ColumnName="HighDef" />
+                <ScalarProperty Name="NetworkOrSyndicated" ColumnName="NetworkOrSyndicated" />
+                <ScalarProperty Name="lead_in_program_type" ColumnName="lead_in_program_type" />
+                <ScalarProperty Name="program_name_category" ColumnName="program_name_category" />
+                <ScalarProperty Name="Commission_Processed_Date" ColumnName="Commission_Processed_Date" />
+                <ScalarProperty Name="Performance_Processed_Date" ColumnName="Performance_Processed_Date" />
+                <ScalarProperty Name="prev_recon_e_type" ColumnName="prev_recon_e_type" />
+                <ScalarProperty Name="web_revenue" ColumnName="web_revenue" />
+                <ScalarProperty Name="upsell30_count" ColumnName="upsell30_count" />
+                <ScalarProperty Name="upsell29_count" ColumnName="upsell29_count" />
+                <ScalarProperty Name="upsell28_count" ColumnName="upsell28_count" />
+                <ScalarProperty Name="upsell27_count" ColumnName="upsell27_count" />
+                <ScalarProperty Name="upsell26_count" ColumnName="upsell26_count" />
+                <ScalarProperty Name="web_order" ColumnName="web_order" />
+                <ScalarProperty Name="web_visit" ColumnName="web_visit" />
+                <ScalarProperty Name="web_click" ColumnName="web_click" />
+                <ScalarProperty Name="Performance_Processed" ColumnName="Performance_Processed" />
+                <ScalarProperty Name="Commission_Processed" ColumnName="Commission_Processed" />
+                <ScalarProperty Name="revlcomm" ColumnName="revlcomm" />
+                <ScalarProperty Name="commission_amt" ColumnName="commission_amt" />
+                <ScalarProperty Name="invoice_status_change_reason" ColumnName="invoice_status_change_reason" />
+                <ScalarProperty Name="mairtime" ColumnName="mairtime" />
+                <ScalarProperty Name="mairdate" ColumnName="mairdate" />
+                <ScalarProperty Name="mtype" ColumnName="mtype" />
+                <ScalarProperty Name="bnote" ColumnName="bnote" />
+                <ScalarProperty Name="verifyvia" ColumnName="verifyvia" />
+                <ScalarProperty Name="utctime" ColumnName="utctime" />
+                <ScalarProperty Name="ordequiv" ColumnName="ordequiv" />
+                <ScalarProperty Name="boidbase" ColumnName="boidbase" />
+                <ScalarProperty Name="cancel_date" ColumnName="cancel_date" />
+                <ScalarProperty Name="accounting_entry_status" ColumnName="accounting_entry_status" />
+                <ScalarProperty Name="buyer_chq_date" ColumnName="buyer_chq_date" />
+                <ScalarProperty Name="buyer_chq_num" ColumnName="buyer_chq_num" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="mbooked_date" ColumnName="mbooked_date" />
+                <ScalarProperty Name="lbooked_date" ColumnName="lbooked_date" />
+                <ScalarProperty Name="PO_reconcile_by" ColumnName="PO_reconcile_by" />
+                <ScalarProperty Name="PO_reconcile_date" ColumnName="PO_reconcile_date" />
+                <ScalarProperty Name="broadcast_utc_date" ColumnName="broadcast_utc_date" />
+                <ScalarProperty Name="date_sent_client_invoice_num" ColumnName="date_sent_client_invoice_num" />
+                <ScalarProperty Name="date_rec_station_invoice_num" ColumnName="date_rec_station_invoice_num" />
+                <ScalarProperty Name="client_chq_date" ColumnName="client_chq_date" />
+                <ScalarProperty Name="client_chq_num" ColumnName="client_chq_num" />
+                <ScalarProperty Name="client_inv_num" ColumnName="client_inv_num" />
+                <ScalarProperty Name="station_chq_date" ColumnName="station_chq_date" />
+                <ScalarProperty Name="station_chq_num" ColumnName="station_chq_num" />
+                <ScalarProperty Name="inv_rcvd_date" ColumnName="inv_rcvd_date" />
+                <ScalarProperty Name="station_inv_num" ColumnName="station_inv_num" />
+                <ScalarProperty Name="show_title_phone" ColumnName="show_title_phone" />
+                <ScalarProperty Name="dtid" ColumnName="dtid" />
+                <ScalarProperty Name="invoice_by" ColumnName="invoice_by" />
+                <ScalarProperty Name="invoice_date" ColumnName="invoice_date" />
+                <ScalarProperty Name="post_log_by" ColumnName="post_log_by" />
+                <ScalarProperty Name="post_log_date" ColumnName="post_log_date" />
+                <ScalarProperty Name="Invoice_Type" ColumnName="Invoice_Type" />
+                <ScalarProperty Name="invoice_num" ColumnName="invoice_num" />
+                <ScalarProperty Name="docm_invoice_link" ColumnName="docm_invoice_link" />
+                <ScalarProperty Name="dms_invoice_status" ColumnName="dms_invoice_status" />
+                <ScalarProperty Name="docm_postlog_link" ColumnName="docm_postlog_link" />
+                <ScalarProperty Name="migrate_fox_date" ColumnName="migrate_fox_date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="program_name" ColumnName="program_name" />
+                <ScalarProperty Name="total_upsell_count" ColumnName="total_upsell_count" />
+                <ScalarProperty Name="show_title_upsell_detail" ColumnName="show_title_upsell_detail" />
+                <ScalarProperty Name="upsell25_count" ColumnName="upsell25_count" />
+                <ScalarProperty Name="upsell24_count" ColumnName="upsell24_count" />
+                <ScalarProperty Name="upsell23_count" ColumnName="upsell23_count" />
+                <ScalarProperty Name="upsell22_count" ColumnName="upsell22_count" />
+                <ScalarProperty Name="upsell21_count" ColumnName="upsell21_count" />
+                <ScalarProperty Name="upsell20_count" ColumnName="upsell20_count" />
+                <ScalarProperty Name="upsell19_count" ColumnName="upsell19_count" />
+                <ScalarProperty Name="upsell18_count" ColumnName="upsell18_count" />
+                <ScalarProperty Name="upsell17_count" ColumnName="upsell17_count" />
+                <ScalarProperty Name="upsell16_count" ColumnName="upsell16_count" />
+                <ScalarProperty Name="upsell15_count" ColumnName="upsell15_count" />
+                <ScalarProperty Name="upsell14_count" ColumnName="upsell14_count" />
+                <ScalarProperty Name="upsell13_count" ColumnName="upsell13_count" />
+                <ScalarProperty Name="upsell12_count" ColumnName="upsell12_count" />
+                <ScalarProperty Name="upsell11_count" ColumnName="upsell11_count" />
+                <ScalarProperty Name="upsell10_count" ColumnName="upsell10_count" />
+                <ScalarProperty Name="upsell9_count" ColumnName="upsell9_count" />
+                <ScalarProperty Name="upsell8_count" ColumnName="upsell8_count" />
+                <ScalarProperty Name="upsell7_count" ColumnName="upsell7_count" />
+                <ScalarProperty Name="upsell6_count" ColumnName="upsell6_count" />
+                <ScalarProperty Name="upsell5_count" ColumnName="upsell5_count" />
+                <ScalarProperty Name="upsell4_count" ColumnName="upsell4_count" />
+                <ScalarProperty Name="upsell3_count" ColumnName="upsell3_count" />
+                <ScalarProperty Name="upsell2_count" ColumnName="upsell2_count" />
+                <ScalarProperty Name="upsell1_count" ColumnName="upsell1_count" />
+                <ScalarProperty Name="base_order_count" ColumnName="base_order_count" />
+                <ScalarProperty Name="gross_revenue" ColumnName="gross_revenue" />
+                <ScalarProperty Name="client_rate" ColumnName="client_rate" />
+                <ScalarProperty Name="station_rate" ColumnName="station_rate" />
+                <ScalarProperty Name="conversion_ratio" ColumnName="conversion_ratio" />
+                <ScalarProperty Name="media_ratio" ColumnName="media_ratio" />
+                <ScalarProperty Name="cpc_amt" ColumnName="cpc_amt" />
+                <ScalarProperty Name="cpo_amt" ColumnName="cpo_amt" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="visual_status" ColumnName="visual_status" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="last_update_by" ColumnName="last_update_by" />
+                <ScalarProperty Name="last_update_date" ColumnName="last_update_date" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="gross_amt" ColumnName="gross_amt" />
+                <ScalarProperty Name="profit_loss_amt" ColumnName="profit_loss_amt" />
+                <ScalarProperty Name="slot_num" ColumnName="slot_num" />
+                <ScalarProperty Name="monitor_time" ColumnName="monitor_time" />
+                <ScalarProperty Name="monitor_date" ColumnName="monitor_date" />
+                <ScalarProperty Name="collected_amt" ColumnName="collected_amt" />
+                <ScalarProperty Name="num_of_inq" ColumnName="num_of_inq" />
+                <ScalarProperty Name="num_of_calls" ColumnName="num_of_calls" />
+                <ScalarProperty Name="air_status" ColumnName="air_status" />
+                <ScalarProperty Name="e_type" ColumnName="e_type" />
+                <ScalarProperty Name="inv_ind" ColumnName="inv_ind" />
+                <ScalarProperty Name="actual_air_time" ColumnName="actual_air_time" />
+                <ScalarProperty Name="actual_air_date" ColumnName="actual_air_date" />
+                <ScalarProperty Name="media_order" ColumnName="media_order" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

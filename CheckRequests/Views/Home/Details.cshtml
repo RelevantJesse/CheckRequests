@@ -1,0 +1,90 @@
+﻿@model CheckRequests.Models.check_request_detail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>check_request_detail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.media_order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.media_order)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.action_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.action_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.auth_user)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.auth_user)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_update_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_update_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_update_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_update_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.media_order_detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.media_order_detail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.check_request1.comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.check_request1.comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.check_request_action.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.check_request_action.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

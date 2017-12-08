@@ -1,31 +1,135 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<CheckRequests.Models.check_request>
+
+@{
+    ViewBag.Title = "Index";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<h2>Index</h2>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.date_needed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.requested_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.business_notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AP_notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.processed_by)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.processed_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.approved_by)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.final_approval_by)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.check_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.create_by)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.create_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_update_by)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_update_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.check_request_action.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.check_request_action1.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.check_request_postage.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.check_request_processing_state.name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_needed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.requested_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.comments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.business_notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AP_notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.processed_by)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.processed_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.approved_by)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.final_approval_by)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.check_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.create_by)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.create_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.last_update_by)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.last_update_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.check_request_action.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.check_request_action1.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.check_request_postage.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.check_request_processing_state.name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
