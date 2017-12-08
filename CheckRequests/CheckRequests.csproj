@@ -46,6 +46,66 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GrapeCity.ActiveReports.ArsClient.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.ArsClient.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Chart.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.Chart.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Diagnostics.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.Diagnostics.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Document.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.Document.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Excel.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.Export.Excel.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Html.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.Export.Html.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Image.Unsafe.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.Export.Image.Unsafe.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Image.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.Export.Image.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Pdf.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.Export.Pdf.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Rdf.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.Export.Rdf.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Word.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.Export.Word.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Xml.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.Export.Xml.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Extensibility.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.Extensibility.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.v11.dll</HintPath>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Viewer.Win.v11, Version=11.2.10750.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Havas\VP_46\Dev_Q3\EuroUI\bin\Debug\GrapeCity.ActiveReports.Viewer.Win.v11.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
